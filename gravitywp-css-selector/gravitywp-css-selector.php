@@ -1,26 +1,29 @@
 <?php
-
 /**
-Plugin Name: GravityWP - CSS Selector
-Plugin URI: https://gravitywp.com/plugins/css-selector/
-Description: Easily select a Gravity Forms CSS Ready Class for your form fields.
-Author: GravityWP
-Version: 1.0.2
-Author URI: http://gravitywp.com
-License: GPL2
-Text Domain: gravitywp-css-selector
-Domain Path: /languages
+ * Plugin Name: GravityWP - CSS Selector
+ * Plugin URI: https://gravitywp.com/plugins/css-selector/
+ * Description: Easily select a Gravity Forms CSS Ready Class for your form fields.
+ * Author: GravityWP
+ * Version: 1.0.4
+ * Author URI: http://gravitywp.com
+ * License: GPL2
+ * Text Domain: gravitywp-css-selector
+ * Domain Path: /languages
  */
 
-// Tribute to Brad Vincent for making the first version of this plugin https://profiles.wordpress.org/bradvin
-// Tribute to Bryan Willis for making a revised version of this plugin available on Github: https://wordpress.org/support/users/codecandid/
-
-use function ReactWPScripts\get_plugin_basedir_path;
+// Tribute to Brad Vincent for making the first version of this plugin https://profiles.wordpress.org/bradvin.
+// Tribute to Bryan Willis for making a revised version of this plugin available on Github: https://wordpress.org/support/users/codecandid/.
 
 if ( class_exists( 'RGForms' ) ) {
 	add_action( 'gform_editor_js', 'gwp_css_selector_render_editor_js' );
 }
 
+/**
+ * Gwp_css_selector_render_editor_js.
+ *
+ * @global
+ * @return  void
+ */
 function gwp_css_selector_render_editor_js() {
 	$custom_start = '';
 
@@ -62,7 +65,7 @@ function gwp_css_selector_render_editor_js() {
 		</li>';
 	}
 
-	// Add Radio Buttons and Checkboxes CSS Classes
+	// Add Radio Buttons and Checkboxes CSS Classes.
 	$modal_html .= "
 		<li>
 		  <a class='gwp_css_acc_link' href='#'>" . esc_html__( 'Radio Buttons & Checkboxes', 'gravitywp-css-selector' ) . "</a>
@@ -85,7 +88,7 @@ function gwp_css_selector_render_editor_js() {
 			</div>';
 	}
 
-	// Add List Heigt CSS Classes
+	// Add List Heigt CSS Classes.
 	$modal_html .= "
 			<div class='gwp_css_accordian'>                   
 			<a class='gwp_css_link' rel='gf_list_height_25' title='gf_list_height_25: " . esc_html__( 'Applies 25px height to all choices.', 'gravitywp-css-selector' ) . "' href='#'>" . esc_html__( 'Height', 'gravitywp-css-selector' ) . " 25px </a>
@@ -112,7 +115,7 @@ function gwp_css_selector_render_editor_js() {
 				  </li>';
 	}
 
-	// Add other GF CSS Classes
+	// Add other GF CSS Classes.
 	$modal_html .= "
 		<li>
 		  <a class='gwp_css_acc_link' href='#'>" . esc_html__( 'Others', 'gravitywp-css-selector' ) . "</a>
@@ -127,7 +130,7 @@ function gwp_css_selector_render_editor_js() {
 		  </div>
 		</li>';
 
-	// Add Gravity PDF CSS Classes
+	// Add Gravity PDF CSS Classes.
 	$modal_html .= "
 		<li>
 		  <a class='gwp_css_acc_link' href='#'>" . esc_html__( 'Gravity PDF', 'gravitywp-css-selector' ) . "</a>
@@ -143,7 +146,7 @@ function gwp_css_selector_render_editor_js() {
 		  </div>
 		</li>';
 
-	// Add Gravity PDF CSS Classes
+	// Add Gravity PDF CSS Classes.
 	$modal_html .= "
 		</ul>
 		<ul class='gwp_css_ul'>
@@ -220,7 +223,7 @@ function gwp_css_selector_render_editor_js() {
 			if (jQuery("#css_ready_selector").length == 0) {
 				//add some html after the CSS Class Name input
 				var $select_link = jQuery("<a id='css_ready_selector' class='thickbox' href='#TB_inline?width=500&height=550&inlineId=css_ready_modal'><span class='dashicons dashicons-text'></span></a>");
-				var $modal = jQuery("<?php echo preg_replace( '/\s*[\r\n\t]+\s*/', '', $modal_html ); ?>").hide();
+				var $modal = jQuery("<?php echo preg_replace( '/\s*[\r\n\t]+\s*/', '', $modal_html ); // phpcs:ignore ?>").hide(); 
 				jQuery(".css_class_setting").append($select_link).append($modal);
 				jQuery(".gwp_css_accordian").hide();
 				$select_link.click(function(e) {
@@ -254,6 +257,12 @@ function gwp_css_selector_render_editor_js() {
 }
 // Translation files of the plugin.
 add_action( 'plugins_loaded', 'gwp_css_selector_load_textdomain' );
+/**
+ * Gwp_css_selector_load_textdomain.
+ *
+ * @global
+ * @return  void
+ */
 function gwp_css_selector_load_textdomain() {
 	load_plugin_textdomain( 'gravitywp-css-selector', false, dirname( plugin_basename( __FILE__ ) ) . '/languages' );
 }

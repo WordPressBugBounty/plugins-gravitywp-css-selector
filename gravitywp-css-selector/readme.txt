@@ -3,8 +3,8 @@ Contributors: gravitywp
 Donate link: http://gravitywp.com/support/
 Tags: gravity forms, css ready classes, form, forms, gravity form
 Requires at least: 3.0.1
-Tested up to: 6.4
-Stable tag: 1.0.2
+Tested up to: 6.7
+Stable tag: 1.0.4
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -38,6 +38,12 @@ Gravity Forms has CSS Ready Classes to style your form fields. Using these class
 3. Add custom css
 
 == Changelog ==
+= 1.0.4 =
+* Minor enhancements.
+
+= 1.0.3 =
+* Minor enhancements.
+
 = 1.0.2 =
 * Added Gravity Forms version check, hide deprecated CSS Ready Classes in 2.5 and higher
 * Added title tags with more detailed description of the function of every CSS class
