@@ -3,8 +3,8 @@ Contributors: gravitywp
 Donate link: http://gravitywp.com/support/
 Tags: gravity forms, css ready classes, form, forms, gravity form
 Requires at least: 3.0.1
-Tested up to: 6.7
-Stable tag: 1.0.4
+Tested up to: 6.8
+Stable tag: 1.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -25,6 +25,23 @@ Gravity Forms has CSS Ready Classes to style your form fields. Using these class
 * Double-click a CSS Ready Class to add it and auto-close the popup
 * Add your own custom CSS to the pop-up modal
 
+== About GravityWP ==
+
+GravityWP is a third party that develops high-quality addons for Gravity Forms. We provide additional tools that can be used to build full-blown web applications.
+
+- [Advanced Merge Tags](https://gravitywp.com/add-on/advanced-merge-tags/): Enhance your form customization with powerful merge tag modifiers, enabling functions like date adjustments, character and word counts, URL encoding, and retrieving data from other forms or sources.
+- [JWT Prefill](https://gravitywp.com/add-on/jwt-prefill/): Securely populate form fields using JSON Web Tokens, ensuring data integrity and streamlining user experience.
+- [Advanced Number Field](https://gravitywp.com/add-on/advanced-number-field/): Enhance number fields with features like custom units, fixed decimal places, sliders, and calculated min/max validation rules.
+- [List Number Format](https://gravitywp.com/add-on/list-number-format/): Transform list field columns into numeric formats, supporting calculations such as totals, or other row and column-based computations, with options for rounding, currency, and range constraints.
+- [List Dropdown](https://gravitywp.com/add-on/list-dropdown/): Convert specific list field columns into dropdown select inputs.
+- [List Datepicker](https://gravitywp.com/add-on/list-datepicker/): Add calendar-based datepickers to list fields, allowing users to select dates directly within list columns.
+- [List Text](https://gravitywp.com/add-on/list-text/): Enhance list columns with features like placeholders, textareas, and custom validation.
+- [Field to Entries](https://gravitywp.com/add-on/field-to-entries/): Automatically generate new form entries based on checkbox selections, multi-select choices, or list row data.
+- [Update Multiple Entries](https://gravitywp.com/add-on/update-multiple-entries/): Enable bulk updates of large amounts of existing entries in target forms through trigger forms, streamlining data management.
+- And more...
+
+Discover our suite of powerful [Add-ons for Gravity Forms](https://gravitywp.com/add-ons/).
+
 == Installation ==
 
 1. Upload the plugin folder to your `/wp-content/plugins/` folder
@@ -38,11 +55,9 @@ Gravity Forms has CSS Ready Classes to style your form fields. Using these class
 3. Add custom css
 
 == Changelog ==
-= 1.0.4 =
-* Minor enhancements.
-
-= 1.0.3 =
-* Minor enhancements.
+= 1.1 =
+* Added pot files for translations
+* Updated Dutch translation.
 
 = 1.0.2 =
 * Added Gravity Forms version check, hide deprecated CSS Ready Classes in 2.5 and higher

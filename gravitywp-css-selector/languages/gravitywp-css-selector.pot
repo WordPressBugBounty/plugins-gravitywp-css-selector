@@ -1,345 +1,312 @@
+#, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: \n"
+"Plural-Forms: nplurals=INTEGER; plural=EXPRESSION;\n"
+"Project-Id-Version: GravityWP - CSS Selector\n"
 "POT-Creation-Date: 2025-04-16 20:05+0200\n"
-"PO-Revision-Date: 2025-04-16 20:11+0200\n"
+"PO-Revision-Date: 2025-04-16 20:04+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
-"Language: nl\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: Poedit 2.4.3\n"
 "X-Poedit-Basepath: ..\n"
-"Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Poedit-KeywordsList: __\n"
+"X-Poedit-Flags-xgettext: --add-comments=translators:\n"
+"X-Poedit-WPHeader: gravitywp-css-selector.php\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"X-Poedit-KeywordsList: __;_e;_n:1,2;_x:1,2c;_ex:1,2c;_nx:4c,1,2;esc_attr__;"
+"esc_attr_e;esc_attr_x:1,2c;esc_html__;esc_html_e;esc_html_x:1,2c;_n_noop:1,2;"
+"_nx_noop:3c,1,2;__ngettext_noop:1,2\n"
 "X-Poedit-SearchPath-0: .\n"
+"X-Poedit-SearchPathExcluded-0: *.min.js\n"
 
 #: gravitywp-css-selector.php:35
 msgid "Select a CSS ready class"
-msgstr "Selecteer een CSS Ready Class"
+msgstr ""
 
 #: gravitywp-css-selector.php:43
 msgid "Two Columns (2)"
-msgstr "(2) Twee kolommen"
+msgstr ""
 
 #: gravitywp-css-selector.php:45
 msgid "Left Half"
-msgstr "Linker helft (links)"
+msgstr ""
 
 #: gravitywp-css-selector.php:46
 msgid "Right Half"
-msgstr "Rechter helft (rechts)"
+msgstr ""
 
 #: gravitywp-css-selector.php:50
 msgid "Three Columns (3)"
-msgstr "(3) Drie kolommen"
+msgstr ""
 
 #: gravitywp-css-selector.php:52
 msgid "Left Third"
-msgstr "Links"
+msgstr ""
 
 #: gravitywp-css-selector.php:53
 msgid "Middle Third"
-msgstr "Midden"
+msgstr ""
 
 #: gravitywp-css-selector.php:54
 msgid "Right Third"
-msgstr "Rechts"
+msgstr ""
 
 #: gravitywp-css-selector.php:58
 msgid "Four Columns (4)"
-msgstr "(4) Vier kolommen"
+msgstr ""
 
 #: gravitywp-css-selector.php:60
 msgid "1st Quarter"
-msgstr "1e kwart"
+msgstr ""
 
 #: gravitywp-css-selector.php:61
 msgid "2nd Quarter"
-msgstr "2e kwart"
+msgstr ""
 
 #: gravitywp-css-selector.php:62
 msgid "3rd Quarter"
-msgstr "3e kwart"
+msgstr ""
 
 #: gravitywp-css-selector.php:63
 msgid "4th Quarter"
-msgstr "4e kwart"
+msgstr ""
 
 #: gravitywp-css-selector.php:71
 msgid "Radio Buttons & Checkboxes"
-msgstr "Keuzerondjes en selectievakjes"
+msgstr ""
 
 #: gravitywp-css-selector.php:73
 msgid ""
 "Turn choices into an inline horizontal list (not evenly spaced columns)."
 msgstr ""
-"Zet keuzes om in een inline horizontale lijst (niet gelijk verdeelde "
-"kolommen)."
 
 #: gravitywp-css-selector.php:73
 msgid "List Inline"
-msgstr "Inline lijst"
+msgstr ""
 
 #: gravitywp-css-selector.php:74
 msgid ""
 "Show choices in two (2) columns, left to right and then descending in rows."
 msgstr ""
-"Toon keuzes in twee (2) kolommen, van links naar rechts en vervolgens "
-"aflopend in rijen."
 
 #: gravitywp-css-selector.php:74 gravitywp-css-selector.php:75
 #: gravitywp-css-selector.php:76 gravitywp-css-selector.php:77
 msgid "Columns"
-msgstr "Kolommen"
+msgstr ""
 
 #: gravitywp-css-selector.php:75
 msgid ""
 "Show choices in three (3) columns, left to right and then descending in rows."
 msgstr ""
-"Toon keuzes in drie (3) kolommen, van links naar rechts en vervolgens "
-"aflopend in rijen."
 
 #: gravitywp-css-selector.php:76
 msgid ""
 "Show choices in four (4) columns, left to right and then descending in rows."
 msgstr ""
-"Toon keuzes in vier (4) kolommen, van links naar rechts en vervolgens "
-"aflopend in rijen."
 
 #: gravitywp-css-selector.php:77
 msgid ""
 "Show choices in five (5) columns, left to right and then descending in rows."
 msgstr ""
-"Toon keuzes in vijf (5) kolommen, van links naar rechts en vervolgens "
-"aflopend in rijen."
 
 #: gravitywp-css-selector.php:84
 msgid ""
 "Show choices in two (2) columns, top to bottom and then the next column."
 msgstr ""
-"Toon keuzes in twee (2) kolommen, van boven naar beneden en vervolgens de "
-"volgende kolom."
 
 #: gravitywp-css-selector.php:84 gravitywp-css-selector.php:85
 #: gravitywp-css-selector.php:86 gravitywp-css-selector.php:87
 msgid "Col Vertical"
-msgstr "Kolom Verticaal"
+msgstr ""
 
 #: gravitywp-css-selector.php:85
 msgid ""
 "Show choices in three (3) columns, top to bottom and then the next column."
 msgstr ""
-"Toon keuzes in drie (3) kolommen, van boven naar beneden en vervolgens de "
-"volgende kolom."
 
 #: gravitywp-css-selector.php:86
 msgid ""
 "Show choices in four (4) columns, top to bottom and then the next column."
 msgstr ""
-"Toon keuzes in vier (4) kolommen, van boven naar beneden en vervolgens de "
-"volgende kolom."
 
 #: gravitywp-css-selector.php:87
 msgid ""
 "Show choices in five (5) columns, top to bottom and then the next column."
 msgstr ""
-"Toon keuzes in vijf (5) kolommen, van boven naar beneden en vervolgens de "
-"volgende kolom."
 
 #: gravitywp-css-selector.php:94
 msgid "Applies 25px height to all choices."
-msgstr "Past een hoogte van 25 px toe op alle keuzes."
+msgstr ""
 
 #: gravitywp-css-selector.php:94
 msgid "Height"
-msgstr "Hoogte"
+msgstr ""
 
 #: gravitywp-css-selector.php:95
 msgid "Applies 50px height to all choices."
-msgstr "Past een hoogte van 50 px toe op alle keuzes."
+msgstr ""
 
 #: gravitywp-css-selector.php:96
 msgid "Applies 75px height to all choices."
-msgstr "Past een hoogte van 75 px toe op alle keuzes."
+msgstr ""
 
 #: gravitywp-css-selector.php:97
 msgid "Applies 100px height to all choices."
-msgstr "Past een hoogte van 100 px toe op alle keuzes."
+msgstr ""
 
 #: gravitywp-css-selector.php:98
 msgid "Applies 125px height to all choices."
-msgstr "Past een hoogte van 125 px toe op alle keuzes."
+msgstr ""
 
 #: gravitywp-css-selector.php:99
 msgid "Applies 150px height to all choices."
-msgstr "Past een hoogte van 150 px toe op alle keuzes."
+msgstr ""
 
 #: gravitywp-css-selector.php:107
 msgid "HTML Block Classes"
-msgstr "HTML-blok klassen"
+msgstr ""
 
 #: gravitywp-css-selector.php:109
 msgid "This turns an HTML field and its contents into a green banner message."
 msgstr ""
-"Hiermee wordt een HTML-veld en de inhoud ervan omgezet in een groen "
-"bannerbericht."
 
 #: gravitywp-css-selector.php:109
 msgid "Green Alert"
-msgstr "Groene waarschuwing"
+msgstr ""
 
 #: gravitywp-css-selector.php:110
 msgid "This turns an HTML field and its contents into a red banner message."
 msgstr ""
-"Hiermee wordt een HTML-veld en de inhoud ervan omgezet in een rood "
-"bannerbericht."
 
 #: gravitywp-css-selector.php:110
 msgid "Red Alert"
-msgstr "Rode waarschuwing"
+msgstr ""
 
 #: gravitywp-css-selector.php:111
 msgid "This turns an HTML field and its contents into a yellow banner message."
 msgstr ""
-"Hiermee wordt een HTML-veld en de inhoud ervan omgezet in een geel "
-"bannerbericht."
 
 #: gravitywp-css-selector.php:111
 msgid "Yellow Alert"
-msgstr "Gele waarschuwing"
+msgstr ""
 
 #: gravitywp-css-selector.php:112
 msgid "This turns an HTML field and its contents into a gray banner message."
 msgstr ""
-"Hiermee wordt een HTML-veld en de inhoud ervan omgezet in een grijs "
-"bannerbericht."
 
 #: gravitywp-css-selector.php:112
 msgid "Gray Alert"
-msgstr "Grijze waarschuwing"
+msgstr ""
 
 #: gravitywp-css-selector.php:113
 msgid "This turns an HTML field and its contents into a blue banner message."
 msgstr ""
-"Hiermee wordt een HTML-veld en de inhoud ervan omgezet in een blauw "
-"bannerbericht."
 
 #: gravitywp-css-selector.php:113
 msgid "Blue Alert"
-msgstr "Blauwe waarschuwing"
+msgstr ""
 
 #: gravitywp-css-selector.php:121
 msgid "Others"
-msgstr "Anders"
+msgstr ""
 
 #: gravitywp-css-selector.php:123
 msgid ""
 "Hides a field, useful for field types where the Visibility setting is not "
 "available, like product fields."
 msgstr ""
-"Verbergt een veld, handig voor veldtypen waarvoor de instelling "
-"Zichtbaarheid niet beschikbaar is, zoals productvelden."
 
 #: gravitywp-css-selector.php:123
 msgid "Invisible Field"
-msgstr "Onzichtbaar veld"
+msgstr ""
 
 #: gravitywp-css-selector.php:124
 msgid ""
 "Places the field inline horizontally with other fields but does not create "
 "equally-spaced column layouts."
 msgstr ""
-"Hiermee wordt het veld horizontaal inline geplaatst met andere velden, maar "
-"worden er geen kolomindelingen met gelijke afstand gemaakt."
 
 #: gravitywp-css-selector.php:124
 msgid "Inline Field"
-msgstr "Inline veld"
+msgstr ""
 
 #: gravitywp-css-selector.php:125
 msgid ""
 "Converts a section break field into a box with a fixed height that will "
 "automatically show a scroll bar if there’s a large amount of text."
 msgstr ""
-"Hiermee wordt een veld voor het einde van een sectie geconverteerd naar een "
-"vak met een vaste hoogte waarin automatisch een schuifbalk wordt weergegeven "
-"als er een grote hoeveelheid tekst is."
 
 #: gravitywp-css-selector.php:125
 msgid "Scrolling Paragraph Text"
-msgstr "Scrollende Paragraaf Tekst"
+msgstr ""
 
 #: gravitywp-css-selector.php:128
 msgid "Hides the am/pm selector in the time field."
-msgstr "Verbergt de am/pm-keuzeschakelaar in het tijdveld."
+msgstr ""
 
 #: gravitywp-css-selector.php:128
 msgid "Hide Time am/pm"
-msgstr "Toon Tijd am/pm"
+msgstr ""
 
 #: gravitywp-css-selector.php:129
 msgid ""
 "Hides the characters left counter beneath paragraph text fields when using "
 "the maximum characters option."
 msgstr ""
-"Verbergt de tekens die links onder de alineatekstvelden staan bij gebruik "
-"van de optie voor het maximale aantal tekens."
 
 #: gravitywp-css-selector.php:129
 msgid "Hide Character Counter"
-msgstr "Verberg Teller Karakters"
+msgstr ""
 
 #: gravitywp-css-selector.php:136
 msgid "Gravity PDF"
-msgstr "Gravity PDF"
+msgstr ""
 
 #: gravitywp-css-selector.php:138
 msgid "Excludes the field from the PDF."
-msgstr "Sluit het veld uit van de PDF."
+msgstr ""
 
 #: gravitywp-css-selector.php:138
 msgid "Exclude from PDF"
-msgstr "Niet tonen in PDF"
+msgstr ""
 
 #: gravitywp-css-selector.php:139
 msgid "Starts a new PDF page with this field at the top of the new page."
 msgstr ""
-"Hiermee begint u een nieuwe PDF-pagina met dit veld boven aan de nieuwe "
-"pagina."
 
 #: gravitywp-css-selector.php:139
 msgid "Pagebreak"
-msgstr "Nieuwe pagina"
+msgstr ""
 
 #: gravitywp-css-selector.php:143
 msgid "Gravity Wiz (Perks)"
-msgstr "Gravity Wiz (Perks)"
+msgstr ""
 
 #: gravitywp-css-selector.php:145
 msgid "Copies the value of Field ID 1 to Field ID 2 (Gravity Perks needed)"
-msgstr "Kopieert de waarde van Veld-ID 1 naar Veld-ID 2 (Gravity Perks nodig)"
+msgstr ""
 
 #: gravitywp-css-selector.php:145
 msgid "Copy Cat"
-msgstr "Copy Cat"
+msgstr ""
 
 #: gravitywp-css-selector.php:154
 msgid "Help"
-msgstr "Hulp"
+msgstr ""
 
 #: gravitywp-css-selector.php:156
 msgid "Add custom css"
-msgstr "Voeg eigen css toe"
+msgstr ""
 
 #: gravitywp-css-selector.php:157
 msgid "Official Gravity Forms Documentation"
-msgstr "Gravity Forms Documentatie"
+msgstr ""
 
 #: gravitywp-css-selector.php:160
 msgid "Tip: click twice, add css, close window "
-msgstr "Tip: klik twee keer, voeg css toe & sluit scherm"
+msgstr ""
 
 #. Plugin Name of the plugin/theme
 msgid "GravityWP - CSS Selector"
@@ -352,43 +319,11 @@ msgstr ""
 #. Description of the plugin/theme
 msgid "Easily select a Gravity Forms CSS Ready Class for your form fields."
 msgstr ""
-"Selecteer eenvoudig een Gravity Forms CSS Ready Class voor uw "
-"formuliervelden."
 
 #. Author of the plugin/theme
 msgid "GravityWP"
-msgstr "GravityWP"
+msgstr ""
 
 #. Author URI of the plugin/theme
 msgid "http://gravitywp.com"
-msgstr "http://gravitywp.com"
-
-#~ msgid "List Layout"
-#~ msgstr "Lijst weergave"
-
-#~ msgid "List Heights"
-#~ msgstr "Lijst hoogtes"
-
-#~ msgid "Documentation"
-#~ msgstr "Documentatie"
-
-#~ msgid "Click on one or more CSS Ready Classes to add them."
-#~ msgstr ""
-#~ "Klik op een of meer CSS Ready Classes om ze toe te voegen aan het veld."
-
-#~ msgid "Tip: double-click adds the class and closes this popup."
-#~ msgstr ""
-#~ "Tip: dubbel-klik om de CSS class toe te voegen en deze pop-up te sluiten."
-
-#~ msgid ""
-#~ "For more help with CSS ready classes, look at the official Gravity Forms "
-#~ "documentation on Gravity Forms documentation about CSS Ready Classes:"
-#~ msgstr ""
-#~ "Voor meer informatie over CSS Ready Classes bezoek je de officiële "
-#~ "Gravity Forms documentatie:"
-
-#~ msgid "Gravity Forms"
-#~ msgstr "Gravity Forms"
-
-#~ msgid "Gravity Wiz"
-#~ msgstr "Gravity Wiz"
+msgstr ""

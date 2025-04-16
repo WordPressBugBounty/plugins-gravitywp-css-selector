@@ -4,7 +4,7 @@
  * Plugin URI: https://gravitywp.com/plugins/css-selector/
  * Description: Easily select a Gravity Forms CSS Ready Class for your form fields.
  * Author: GravityWP
- * Version: 1.0.4
+ * Version: 1.1
  * Author URI: http://gravitywp.com
  * License: GPL2
  * Text Domain: gravitywp-css-selector
