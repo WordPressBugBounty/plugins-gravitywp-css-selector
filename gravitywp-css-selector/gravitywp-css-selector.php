@@ -2,9 +2,9 @@
 /**
  * Plugin Name: GravityWP - CSS Selector
  * Plugin URI: https://gravitywp.com/plugins/css-selector/
- * Description: Easily select a Gravity Forms CSS Ready Class for your form fields.
+ * Description: Quickly select custom and add-on CSS classes.
  * Author: GravityWP
- * Version: 1.1
+ * Version: 1.1.1
  * Author URI: http://gravitywp.com
  * License: GPL2
  * Text Domain: gravitywp-css-selector
@@ -14,8 +14,24 @@
 // Tribute to Brad Vincent for making the first version of this plugin https://profiles.wordpress.org/bradvin.
 // Tribute to Bryan Willis for making a revised version of this plugin available on Github: https://wordpress.org/support/users/codecandid/.
 
-if ( class_exists( 'RGForms' ) ) {
+if ( class_exists( 'GFForms' ) || class_exists( 'RGForms' ) ) {
 	add_action( 'gform_editor_js', 'gwp_css_selector_render_editor_js' );
+}
+
+add_action( 'gform_loaded', 'gwp_css_selector_load_addon' );
+
+/** Register plugin settings after Gravity Forms loads. */
+function gwp_css_selector_load_addon() {
+	if ( ! method_exists( 'GFForms', 'include_addon_framework' ) ) {
+		return;
+	}
+	GFForms::include_addon_framework();
+	require_once __DIR__ . '/includes/class-css-selector-addon.php';
+	GFAddOn::register( '\\GravityWP\\CSSSelector\\CSS_Selector_AddOn' );
+	// Also support load order where GF was not available at initial plugin load.
+	if ( ! has_action( 'gform_editor_js', 'gwp_css_selector_render_editor_js' ) ) {
+		add_action( 'gform_editor_js', 'gwp_css_selector_render_editor_js' );
+	}
 }
 
 /**
@@ -28,17 +44,24 @@ function gwp_css_selector_render_editor_js() {
 	$custom_start = '';
 
 	$custom_css = apply_filters( 'gwp_css_selector_add_custom_css', $custom_start );
+	$library_html = class_exists( '\\GravityWP\\CSSSelector\\CSS_Selector_AddOn' )
+		? \GravityWP\CSSSelector\CSS_Selector_AddOn::get_instance()->library_html()
+		: '';
 
 	$modal_html = "
 		<div id='css_ready_modal'><style>
 		#css_ready_selector,a.gwp_css_acc_link,a.gwp_css_link {text-decoration:none}#css_ready_selector {display:block}#css_ready_modalh4{margin-bottom:2px}.gwp_css_accordian{display:-ms-flexbox;display:-webkit-box;display:flex;-ms-flex-direction:row;-webkit-box-orient:horizontal;-webkit-box-direction:normal;flex-direction:row;-ms-flex-wrap:wrap;flex-wrap:wrap;-ms-flex-pack:center;-webkit-box-pack:center;justify-content:center;-ms-flex-line-pack:justify;align-content:space-between;-ms-flex-align:center;-webkit-box-align:center;align-items:center;margin:5px 0}a.gwp_css_acc_link{font-weight:700;display:block;padding:5px;text-align:left;background:#d2e0eb;border:1px solid #ddd;color:#47759B}a.gwp_css_link{margin:2px;text-align:center;padding:3px; padding-left:10px;padding-right:10px;border:1px solid #aaa;background:#eee;display:inline-block;box-sizing:border-box;-ms-flex-order:0;-webkit-box-ordinal-group:1;order:0;-ms-flex:1 0 auto;-webkit-box-flex:1;flex:1 0 auto;-ms-flex-item-align:stretch;align-self:stretch}a.gwp_css_link:hover{background:#ddd}ul.gwp_css_ul{margin:0;padding:0}a.gwp_css_link_doc{margin:2px;text-align:center;padding:3px;border:1px solid #aaa;background:#eee;display:inline-block;box-sizing:border-box;-ms-flex-order:0;-webkit-box-ordinal-group:1;order:0;-ms-flex:1 0 auto;-webkit-box-flex:1;flex:1 0 auto;-ms-flex-item-align:stretch;align-self:stretch; text-decoration:none;}a.gwp_css_link_doc:hover{background:#ddd}ul.gwp_css_ul{margin:0;padding:0} ul.gwp_css_ul li{margin:2px;padding:0}.gwp_title {margin-top: 12px;margin-bottom: 10px;font-weight: bold;}</style>              
-		<div class='gwp_title'>" . esc_html__( 'Select a CSS ready class', 'gravitywp-css-selector' ) . "</div>
+		<div class='gwp_title'>" . esc_html__( 'Select a CSS class', 'gravitywp-css-selector' ) . "</div>
 		<ul class='gwp_css_ul'>
-		" . $custom_css;
+		<li id='gwp-used-classes'><div class='gwp_title'>" . esc_html__( 'Used on other fields', 'gravitywp-css-selector' ) . "</div><div class='gwp-used-class-links'></div></li>
+		" . $library_html . $custom_css;
+
+	// Build legacy Ready Classes separately; never modify saved field classes.
+	$legacy_html = '';
 
 	// Add column CSS selectors only for Gravity Forms version 2.4 and earlier.
 	if ( version_compare( GFCommon::$version, '2.5', '<' ) ) {
-		$modal_html .= "
+		$legacy_html .= "
 		<li>
 		  <a class='gwp_css_acc_link' href='#'>" . esc_html__( 'Two Columns (2)', 'gravitywp-css-selector' ) . "</a>
 		  <div class='gwp_css_accordian'>
@@ -66,7 +89,7 @@ function gwp_css_selector_render_editor_js() {
 	}
 
 	// Add Radio Buttons and Checkboxes CSS Classes.
-	$modal_html .= "
+	$legacy_html .= "
 		<li>
 		  <a class='gwp_css_acc_link' href='#'>" . esc_html__( 'Radio Buttons & Checkboxes', 'gravitywp-css-selector' ) . "</a>
 		  <div class='gwp_css_accordian'>                
@@ -79,7 +102,7 @@ function gwp_css_selector_render_editor_js() {
 
 	// Add List Columns Vertical only for Gravity Forms version 2.5 and later.
 	if ( version_compare( GFCommon::$version, '2.5', '>=' ) ) {
-		$modal_html .= "
+		$legacy_html .= "
 			<div class='gwp_css_accordian'>                
 			<a class='gwp_css_link' rel='gf_list_2col_vertical' title='gf_list_2col_vertical: " . esc_html__( 'Show choices in two (2) columns, top to bottom and then the next column.', 'gravitywp-css-selector' ) . "' href='#'>2 " . esc_html__( 'Col Vertical', 'gravitywp-css-selector' ) . "</a>
 			<a class='gwp_css_link' rel='gf_list_3col_vertical' title='gf_list_3col_vertical: " . esc_html__( 'Show choices in three (3) columns, top to bottom and then the next column.', 'gravitywp-css-selector' ) . "' href='#'>3 " . esc_html__( 'Col Vertical', 'gravitywp-css-selector' ) . "</a>
@@ -88,8 +111,8 @@ function gwp_css_selector_render_editor_js() {
 			</div>';
 	}
 
-	// Add List Heigt CSS Classes.
-	$modal_html .= "
+	// Add List Height CSS Classes.
+	$legacy_html .= "
 			<div class='gwp_css_accordian'>                   
 			<a class='gwp_css_link' rel='gf_list_height_25' title='gf_list_height_25: " . esc_html__( 'Applies 25px height to all choices.', 'gravitywp-css-selector' ) . "' href='#'>" . esc_html__( 'Height', 'gravitywp-css-selector' ) . " 25px </a>
 			<a class='gwp_css_link' rel='gf_list_height_50' title='gf_list_height_50: " . esc_html__( 'Applies 50px height to all choices.', 'gravitywp-css-selector' ) . "' href='#'>50px</a>
@@ -102,7 +125,7 @@ function gwp_css_selector_render_editor_js() {
 
 	// Add HTML Block Classes only for Gravity Forms version 2.5 and later.
 	if ( version_compare( GFCommon::$version, '2.5', '>=' ) ) {
-		$modal_html .= "
+		$legacy_html .= "
 				<li>
 					<a class='gwp_css_acc_link' href='#'>" . esc_html__( 'HTML Block Classes', 'gravitywp-css-selector' ) . "</a>
 					<div class='gwp_css_accordian'>                   
@@ -116,7 +139,7 @@ function gwp_css_selector_render_editor_js() {
 	}
 
 	// Add other GF CSS Classes.
-	$modal_html .= "
+	$legacy_html .= "
 		<li>
 		  <a class='gwp_css_acc_link' href='#'>" . esc_html__( 'Others', 'gravitywp-css-selector' ) . "</a>
 		  <div class='gwp_css_accordian'>                   
@@ -129,6 +152,11 @@ function gwp_css_selector_render_editor_js() {
 			<a class='gwp_css_link' rel='gf_hide_charleft' title='gf_hide_charleft: " . esc_html__( 'Hides the characters left counter beneath paragraph text fields when using the maximum characters option.', 'gravitywp-css-selector' ) . "' href='#'>" . esc_html__( 'Hide Character Counter', 'gravitywp-css-selector' ) . '</a>
 		  </div>
 		</li>';
+
+	// Ready Classes are legacy and unavailable in the picker on Gravity Forms 3.0+.
+	if ( version_compare( GFCommon::$version, '3.0', '<' ) ) {
+		$modal_html .= "<li class='gwp_title'>" . esc_html__( 'Legacy Ready Classes', 'gravitywp-css-selector' ) . '</li>' . $legacy_html;
+	}
 
 	// Add Gravity PDF CSS Classes.
 	$modal_html .= "
@@ -146,18 +174,20 @@ function gwp_css_selector_render_editor_js() {
 		  </div>
 		</li>';
 
-	// Add Gravity PDF CSS Classes.
+	// Add help for custom classes and native layout settings.
 	$modal_html .= "
 		</ul>
 		<ul class='gwp_css_ul'>
 		<li>
 		  <a class='gwp_css_acc_link' href='#'>" . esc_html__( 'Help', 'gravitywp-css-selector' ) . "</a>
 		  <div class='gwp_css_accordian'>
+			<a class='gwp_css_link_doc' href='" . esc_url( admin_url( 'admin.php?page=gf_settings&subview=gravitywp-css-selector' ) ) . "'>" . esc_html__( 'Manage class library', 'gravitywp-css-selector' ) . "</a>
 			<a class='gwp_css_link_doc' href='https://gravitywp.com/doc/add-custom-css-buttons/' target='_blank'>" . esc_html__( 'Add custom css', 'gravitywp-css-selector' ) . "</a>
-			<a class='gwp_css_link_doc' href='https://docs.gravityforms.com/css-ready-classes/' target='_blank'>" . esc_html__( 'Official Gravity Forms Documentation', 'gravitywp-css-selector' ) . "</a>
+			<a class='gwp_css_link_doc' href='https://docs.gravityforms.com/css-ready-classes/' target='_blank'>" . esc_html__( 'Legacy Ready Classes Documentation', 'gravitywp-css-selector' ) . "</a>
 			</div>
 			<div class='gwp_css_accordian'>
-			<p>" . esc_html__( 'Tip: click twice, add css, close window ', 'gravitywp-css-selector' ) . '</p>
+			<p>" . esc_html__( 'Use native Choice Layout settings instead of legacy choice layout shortcuts. Ready Classes are hidden on Gravity Forms 3.0 and later. Saved classes are not removed.', 'gravitywp-css-selector' ) . "</p>
+			<p>" . esc_html__( 'Tip: double-click a class to add it and close the window.', 'gravitywp-css-selector' ) . '</p>
 		  </div>
 		</li>
 		</ul>';
@@ -219,16 +249,84 @@ function gwp_css_selector_render_editor_js() {
 			}
 			return false;
 		}
+		var gwpCssLegacyClasses = <?php
+			// Include column classes even when current GF version hides their catalogue.
+			preg_match_all( "/rel='([^']+)'/", $legacy_html, $legacy_matches );
+			echo wp_json_encode( array_values( array_unique( array_merge(
+				$legacy_matches[1],
+				array( 'gf_left_half', 'gf_right_half', 'gf_left_third', 'gf_middle_third', 'gf_right_third', 'gf_first_quarter', 'gf_second_quarter', 'gf_third_quarter', 'gf_fourth_quarter' )
+			) ) ), JSON_HEX_TAG | JSON_HEX_AMP | JSON_HEX_APOS | JSON_HEX_QUOT );
+		?>;
+		var gwpCssStrings = <?php echo wp_json_encode( array(
+			'legacy' => __( 'Legacy', 'gravitywp-css-selector' ),
+			'legacyHelp' => __( 'Legacy Ready Class. Prefer native layout settings where available; behavior depends on form theme and Gravity Forms version.', 'gravitywp-css-selector' ),
+			'empty' => __( 'No classes used on other fields.', 'gravitywp-css-selector' ),
+			'field' => __( 'Field', 'gravitywp-css-selector' ),
+		), JSON_HEX_TAG | JSON_HEX_AMP | JSON_HEX_APOS | JSON_HEX_QUOT ); ?>;
+
+		function gwpCssMarkLegacy($modal) {
+			$modal.find('.gwp_css_link').each(function () {
+				var $link = jQuery(this);
+				var tokens = ($link.attr('rel') || '').split(/\s+/);
+				if (tokens.some(function (token) { return gwpCssLegacyClasses.indexOf(token) !== -1; }) && !$link.find('.gwp-legacy-badge').length) {
+					$link.append(jQuery('<small class="gwp-legacy-badge">').text(' — ' + gwpCssStrings.legacy));
+					$link.attr('title', ($link.attr('title') || '') + ' — ' + gwpCssStrings.legacyHelp);
+				}
+			});
+		}
+
+		function gwpCssUsedClasses($modal, selected, editorForm) {
+			var usage = Object.create(null);
+			(editorForm.fields || []).forEach(function (other) {
+				if (String(other.id) === String(selected.id)) {
+					return;
+				}
+				var seen = Object.create(null);
+				String(other.cssClass || '').split(/\s+/).forEach(function (token) {
+					if (!token || seen[token]) {
+						return;
+					}
+					seen[token] = true;
+					if (!usage[token]) {
+						usage[token] = [];
+					}
+					usage[token].push(gwpCssStrings.field + ' ' + other.id + (other.label ? ': ' + other.label : ''));
+				});
+			});
+			var $links = $modal.find('.gwp-used-class-links').empty();
+			var classes = Object.keys(usage).sort();
+			if (!classes.length) {
+				$links.append(jQuery('<p>').text(gwpCssStrings.empty));
+			}
+			classes.forEach(function (token) {
+				$links.append(jQuery('<a class="gwp_css_link" href="#">')
+					.attr('rel', token).attr('title', usage[token].join('\n'))
+					.text(token + ' (' + usage[token].length + ')'));
+			});
+			gwpCssMarkLegacy($modal);
+		}
+
 		jQuery(document).bind("gform_load_field_settings", function(event, field, form) {
+			var $existingModal = jQuery('#css_ready_modal');
+			if ($existingModal.length) {
+				gwpCssUsedClasses($existingModal, field, form);
+			}
 			if (jQuery("#css_ready_selector").length == 0) {
 				//add some html after the CSS Class Name input
-				var $select_link = jQuery("<a id='css_ready_selector' class='thickbox' href='#TB_inline?width=500&height=550&inlineId=css_ready_modal'><span class='dashicons dashicons-text'></span></a>");
-				var $modal = jQuery("<?php echo preg_replace( '/\s*[\r\n\t]+\s*/', '', $modal_html ); // phpcs:ignore ?>").hide(); 
+				var $select_link = jQuery("<a id='css_ready_selector' class='thickbox' href='#TB_inline?width=500&height=550&inlineId=css_ready_modal'><span class='dashicons dashicons-text'></span></a>")
+					.attr('aria-label', <?php echo wp_json_encode( __( 'Select a CSS class', 'gravitywp-css-selector' ), JSON_HEX_TAG | JSON_HEX_AMP | JSON_HEX_APOS | JSON_HEX_QUOT ); ?>);
+				var $modal = jQuery(<?php echo wp_json_encode( $modal_html, JSON_HEX_TAG | JSON_HEX_AMP | JSON_HEX_APOS | JSON_HEX_QUOT ); ?>).hide();
+				gwpCssUsedClasses($modal, field, form);
 				jQuery(".css_class_setting").append($select_link).append($modal);
 				jQuery(".gwp_css_accordian").hide();
 				$select_link.click(function(e) {
 					e.preventDefault();
 					var $m = jQuery("#css_ready_modal");
+					var selected = typeof GetSelectedField === 'function' ? GetSelectedField() : field;
+					var editorForm = window.form || form;
+					if (selected) {
+						gwpCssUsedClasses($m, selected, editorForm);
+					}
 					$m.find(".gwp_css_acc_link").unbind("click").click(function(e) {
 						e.preventDefault();
 						jQuery('.gwp_css_accordian:visible').slideUp();

@@ -1,29 +1,44 @@
 === GravityWP - CSS Selector ===
 Contributors: gravitywp
 Donate link: http://gravitywp.com/support/
-Tags: gravity forms, css ready classes, form, forms, gravity form
+Tags: gravity forms, css classes, form, forms, gravity form
 Requires at least: 3.0.1
-Tested up to: 6.8
-Stable tag: 1.1
+Tested up to: 7.1
+Stable tag: 1.1.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
-Easily select CSS Ready Classes for your fields within Gravity Forms
+Quickly select custom and add-on CSS classes.
 
 == Description ==
 
-> This plugin is an add-on for the amazing Gravity Forms Plugin. 
-Special thanks to [Brad Vincent](https://profiles.wordpress.org/bradvin/) and [Bryan Willis](https://github.com/bryanwillis) for developing the first and revised version of this plugin. 
+> This plugin is an add-on for the amazing Gravity Forms Plugin.
+Special thanks to [Brad Vincent](https://profiles.wordpress.org/bradvin/) and [Bryan Willis](https://github.com/bryanwillis) for developing the first and revised version of this plugin.
 
-Gravity Forms has CSS Ready Classes to style your form fields. Using these classes, you can easily create more advanced layouts for the fields in your forms. Excellent idea, however, the problem is you always need to remember what the exact class name is. Now with this CSS Selector, you don’t need to remember. Simply click on a button to launch the pop-up and choose the class you want to add.
+Quickly select custom and add-on CSS classes for your Gravity Forms fields. Open the picker next to the CSS Class field to add your own custom classes, Gravity PDF shortcuts, or the Gravity Wiz Copy Cat shortcut without remembering each class name.
+
+Manage reusable class names, labels, descriptions and groups under Forms > Settings > CSS Selector without writing PHP. These are shortcuts for existing CSS rules; the library does not generate styles. Removing a library shortcut does not change saved fields.
+
+The picker also lists classes used on other fields in the current form, including unsaved editor changes. Counts and tooltips show which fields use each class. Legacy Ready Classes are marked when shown, including classes reused from other fields.
+
+CSS Ready Classes are legacy functionality. On Gravity Forms versions earlier than 3.0, the picker retains the applicable legacy shortcuts. On Gravity Forms 3.0 and later, built-in Ready Classes are hidden. Use native Choice Layout settings for radio button and checkbox layouts instead of the old choice layout shortcuts, and the native editor for field columns.
+
+Existing saved classes are preserved. This update does not automatically remove or rewrite classes on your fields.
+
+CSS Selector remains free and available for existing and new users. Development focuses on compatibility and maintenance, not expanding the legacy class catalogue.
 
 = Features =
-* Convenient button added under the advanced tab next to the CSS Class field
-* Clean and simple pop-up that lists all the CSS Ready Classes
-* HTML Field Classes (alerts), Gravity PDF, Gravity Perks and CSS Ready Classes selectable
-* Add more than one CSS Ready Class
-* Double-click a CSS Ready Class to add it and auto-close the popup
-* Add your own custom CSS to the pop-up modal
+* Convenient button next to the CSS Class field in the form editor
+* Small picker for custom and add-on CSS classes
+* No-code, plugin-level class library with labels, descriptions and groups
+* Reuse classes from other fields, with usage counts and field tooltips
+* Legacy badges on Ready Classes
+* Gravity PDF shortcuts: exclude a field or start a new PDF page
+* Gravity Wiz Copy Cat shortcut: copy Field ID 1 to Field ID 2 (requires Copy Cat; adjust IDs as needed)
+* Add more than one CSS class
+* Double-click a CSS class to add it and auto-close the popup
+* Add your own custom class buttons with the existing filter
+* Legacy Ready Classes available only on Gravity Forms versions earlier than 3.0
 
 == About GravityWP ==
 
@@ -55,6 +70,17 @@ Discover our suite of powerful [Add-ons for Gravity Forms](https://gravitywp.com
 3. Add custom css
 
 == Changelog ==
+= 1.1.1 =
+* Add a no-code class library under Forms > Settings > CSS Selector.
+* Show classes used on other fields in the selector, including unsaved edits, with usage counts and field tooltips.
+* Mark legacy Ready Classes without removing or rewriting saved classes.
+* Safely encode picker markup for JavaScript, including custom filter output.
+* GF 3.0+ compatibility: Restore editor hook registration when Gravity Forms exposes GFForms without the legacy RGForms class.
+* Hide legacy CSS Ready Classes in the picker on Gravity Forms 3.0 and later.
+* Keep custom classes, Gravity PDF and Copy Cat shortcuts available.
+* Preserve existing saved field classes without automatic removal.
+* Update picker wording and document native Choice Layout as the replacement for legacy choice layout shortcuts.
+
 = 1.1 =
 * Added pot files for translations
 * Updated Dutch translation.
@@ -92,12 +118,15 @@ Discover our suite of powerful [Add-ons for Gravity Forms](https://gravitywp.com
 
 = 0.1 =
 * Initial Release
-* Added localisation 
+* Added localisation
 
 == Frequently Asked Questions ==
 
 = Does this plugin rely on anything? =
 Yes, you need to install the [Gravity Forms Plugin](http://www.gravityforms.com/) for this plugin to work. And it needs to be at least v1.5.
+
+= Why are Ready Classes missing on Gravity Forms 3.0 and later? =
+Ready Classes are legacy functionality and are no longer offered in the modern picker. Use native Choice Layout settings for choice layouts. Custom class buttons, Gravity PDF and Copy Cat shortcuts remain available, and existing saved classes are not removed.
 
 = How to add custom CSS buttons? =
 You can add your own CSS to the CSS Selector easily in your functions.php file. Just add the following example code there. It adds quick buttons and an accordion on top of the modal. That way you can put easily your own CSS in the layout you want.
